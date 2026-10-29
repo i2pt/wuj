@@ -1,0 +1,3 @@
+The algorithm utilizes the correlation information of the discrete-time channel tap coefficients, and a method for consistent estimation of the channel correlation matrix is presented.
+
+

@@ -1,0 +1,280 @@
+/*	style sheet for Dr. Jingxian Wu's homepage
+	Name: stylejwu.css
+	Author: Jingxian Wu
+	Date: 08/10/2005
+	
+	margin: top right bottom left
+	color: red yellow blue
+*/
+
+/* links */
+
+a:link {
+  color: #69c;
+  }
+
+a:visited {
+  color: #666699;
+  }
+
+a:hover {
+  color: #693;
+  }
+
+a:active {
+  color: #cc3333;
+  text-decoration: none;
+  }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+  font-size: small;
+  text-align: center;
+  color: #333;
+  background: #e0e0e0;
+  }
+  
+ul{
+	margin-left: 10px;
+}
+  
+/* wrap for the entire webpage */
+#wrap {
+  width: 847px;
+  margin: 0 auto;
+  text-align: left;
+  background: url(images/tile.gif) repeat-y;
+  }
+
+/* header */
+#header {
+  margin: 0 40px 0 40px;
+  padding: 0;
+  font-family: "Times New Roman", "Lucida Grande", "Trebuchet MS";
+  color: #fff;
+  background:  #39f ; /* #344efe */ ; 
+  }
+  
+#header img {
+	float: right;
+  	margin: 0px 0px 0px 0px;
+  	padding: 0px;
+  	border-top: 0px solid #ddd;
+  	border-left: 0px solid #ddd;
+  	border-bottom: 0px solid #c0c0c0;
+  	border-right: 0px solid #c0c0c0;
+  	background: #fff;
+}
+
+#header img.photo {
+	margin-right: 100px;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 
+	padding: 0px 60px 10px 20px; /* 45px 60px 50px 160px; */
+	font-size: 200%;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: #81A75B 2px 2px 2px;
+}
+
+#header h2 {
+	margin: 20px 0 0 0;
+	padding: 
+	padding: 0px 60px 10px 20px; /* 45px 60px 50px 160px; */
+	font-size: 120%;
+	color: #fff;
+	text-shadow: #81A75B 2px 2px 2px;
+}
+
+#header td.search {
+	padding-left: 100px;
+	text-align: left;
+}
+
+#header table.search {
+	margin: -3px 0 -3px -3px;
+	padding: -3px 0 -3px -3px;
+	border: -3px 0 -3px -3px;
+}
+
+#header td.logo {
+	padding-top: 12px;
+	padding-left: 100px;
+	text-align: left;
+}
+
+/* navigation bar */
+#navibar {
+	margin-left:  40px;
+	margin-right: 40px;
+	background: #fff url{images/bar.jpg} repeat;
+}
+
+#navibar td {
+	padding: 0.5em 30px 7px 30px;
+	width: 100px;
+	font-size: 100%;
+	font-color: #999;
+	font-weight: bold;
+	text-align: left;
+	text-shadow: #ff0 3px 3px 3px;
+	background: url(images/bar.jpg);
+}
+
+#navibar td a {
+	color: #777; 
+	text-decoration: none
+}
+
+td.nav a:hover {
+	color: #999
+}
+  
+/* wrapper for main body and side bar */
+#content {
+	margin-left: 62px; /* to avoid the BMH */
+}
+
+/* the main body */
+#main-content {
+  float: left;
+  width: 720px /*460px*/;
+  margin: 20px 0 0 0;
+  padding: 0;
+  line-height: 1.5em;
+}
+
+
+/* block, several categories might made up of one block */
+.block {
+	margin: 0 0 1em 0;
+	padding: 1em 0 1em 0;
+	border-bottom: 1px solid #ddd;
+	}
+
+/* category */
+.category {
+	margin: 0 0 1.5em 14px;
+	padding: 0 0 0 0;
+}
+
+.category-body {
+	margin: 14px;
+	padding 0;
+	font-size: 100%;
+	color: #555; /* #3366ff;*/
+}
+
+.category-body a {
+	text-decoration: none; 
+	color: #555; 
+}
+
+.category-body a:hover {
+	text-decoration: none; 
+	color: #aaa; 
+}
+
+.category-body a:visited {
+	text-decoration: none; 
+	color: #555; /*#a69; */
+}
+
+.category-footer {
+  margin: 0;
+  align="right";
+  padding: 0 0 0 14px;
+  font-size: 100%;
+  color: #999;
+}
+
+h2.category-title {
+	margin-top: 0;
+	font-family: "Times New Roman", "Lucida Grande", "Trebuchet MS";
+  	font-size: 160%;
+  	font-weight: extra-blod;
+  	text-decoration: none;
+	color: #39f;  /* #3366ff; */
+}
+
+h2.category-title a {
+	text-decoration: none;
+	color: #39f;
+}
+
+h2.category-title a:visited{
+	color: #39f;
+	}
+
+h2.category-title a:hover {
+	color: #693;
+}
+
+
+
+#publication {
+}
+
+
+
+
+/* side bar */
+
+#sidebar {
+  margin: 0 41px 0 485px;
+  padding: 20px 0 0 0;
+  font-size: 85%;
+  line-height: 1.4em;
+  color: #999;
+  background: url(images/sidebar_bg.gif) no-repeat 0 0;
+  }
+
+h2.sidebar-title {
+  margin: 0 0 0 0;
+  padding: 25px 0 0 50px;
+  font-family: "Lucida Grande", "Trebuchet MS";
+  font-size: 130%;
+  color: #666;
+  height: 32px;
+  background: url(images/sidebar_icon.gif) no-repeat 20px 15px;
+  height: 32px !important; /* for most browsers */
+  height /**/:57px; /* for IE5/Win */
+}
+
+#sidebar p {
+  margin: 0;
+  padding: 5px 20px 1em 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+#sidebar ul {
+  margin: 0 0 0 0;
+  padding: 5px 20px 1em 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* footer */
+
+.clear { /* to fix IE6 padding-top issue */
+  clear: both;
+  height: 0;
+  }
+
+#footer {
+  margin: 0;
+  padding: 0 0 9px 0;
+  font-size: 85%;
+  color: #ddd;
+  background: url(images/bottom_sill.gif) no-repeat bottom left;
+  }
+
+#footer p {
+  margin: 0;
+  padding: 20px 320px 20px 95px;
+  background: url(images/bottom_bash.gif) no-repeat bottom left;
+  }

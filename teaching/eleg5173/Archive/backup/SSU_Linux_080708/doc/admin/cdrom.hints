@@ -1,0 +1,238 @@
+-------------------------------------------------------------------------------
+Creating ISO images to record onto cdroms...
+
+Special commands
+  mkisofs   -- create a ISO9660 image from a directory
+  isoinfo   -- directory listing an iso image
+  isodump   -- interactive exporation of image - ?? commands ??
+  devdump   --
+
+Reading CDROM
+  Without error checking you can use...
+         cat /dev/cdrom > cdrom.iso
+     or  dd if=/dev/cdrom of=cdrom.iso
+  With a progress meter look for "sdd" by Jrg Schillings.
+
+  Or better still use "readcd" from the cdrecord package,
+  which will do multiple reads on error contitions. With no argumants it will
+  present a interactive menu, (pick number 11). Or run it as a batch as...
+         cdread f=cdrom.iso
+
+List the contents of an image (without mouting)
+    isoinfo -fi games2.iso
+
+Create an ISO image from a directory
+    mkisofs -o cdrom.iso -R -J -V "Volume_Title"  directory
+Options: -R    is for Rock Ridge Extensions (Unix long filename)
+         -J    is Joliet (Miscrosoft long filenames)
+         -hfs  another long file name extension (for macs)
+
+Alturnative to copying all files under the directory is to know make symlinks
+to the real file, and use "-f" option.  This replaces all symlinks found in
+ths directory with a copy of the pointed to file in the created ISO.  Of
+course this also means the resulting ISO will not contain any symlinks!
+
+Mount a ISO image as a file system (root)
+    mount -t iso9660 -o ro,loop cdrom.iso  /mnt
+
+-------------------------------------------------------------------------------
+Burning CDroms from ISOs
+
+NB: cdrecord MUST run as root due to special fcntl controls needed, you can
+however make cdrecord suid to root
+
+Test burn  cd-rw drive (root)
+    cdrecord -eject -multi -dummy -v dev=0,0,0 speed=8 padsize=600m /dev/null
+OR  cdrecord -eject -multi -dummy -v dev=0,0,0 speed=8 cdrom.iso
+
+Burn an ISO image to cd-rw drive (root) (add -multi to not close CD sesson)
+    cdrecord -eject -multi -v dev=0,0,0 speed=8 cdrom.iso
+
+Or on a 400Mhz or better burn a directory straight from the file system
+    mkisofs -R -J  -V "Volume_Title"   directory  |\
+       cdrecord -eject -multi -v dev=0,0,0 speed=8 -data -
+(See cd burning howto if a size is required).
+
+Multiple Image CDs
+  All images must have "-multi" used on all cdrecord sessions.
+  The first mkisofs session is generated as normal.
+  Later must have the track number ( -C # ) included when generated.
+     set next = `cdrecord -msinfo dev=0,0,0`
+     echo "Next Track is $next"
+     mkisofs -R -J -o cdrom_new.iso -C $next -M /dev/cdrom \
+                -V "Volume_Title"  filesystem/
+     cdrecord -eject -multi -v dev=0,0,0 speed=8 cdrom_new.iso
+
+Bootable CDs
+  For more info read  "README.eltorito"  in mkisofs distribution.
+  * The first few blocks of the CD image must be replaced with a bootable floppy
+    image. Create a image from a floppy with...
+      dd if=/dev/fd0 of=boot.img bs=10k count=144
+  * This file is then copied into the cdrom file system, often under the
+    sub-directory "boot".
+  * A second file "boot catalog" will be automatically created and should ne
+    named something to avoid conflict with the other filenames. It also
+    probbaly should be in the "boot" sub-directory.
+  * Make iso image
+       mkisofs -b boot/boot.img -c boot/boot.catalog -R ...as normal...
+
+For a better discussion, and specifically "boot to linux" cdroms,
+see  http://www.au.linuxfromscratch.org/hints/downloads/files/bootcd.txt
+also http://www.au.linuxfromscratch.org/hints/downloads/files/boot-cd_easy.txt
+
+-------------------------------------------------------------------------------
+ISO9660 notes..
+
+  CD data is stored on the cdrom generally in ISO9660 format
+  The first 32Kb of this format is usally empty (all zeros)
+  The next block contains the cdroms name and title.
+
+  EG:  dd if=/dev/cdrom skip=64 count=1 | strings
+  OR   dd if=/dev/cdrom skip=64 count=1 | od -c
+  OR   dd if=/dev/cdrom skip=64 count=1 | hex -g
+
+=======8<--------
+#!/bin/sh
+#
+# Read the cdrom information from cdrom
+#
+RD=/dev/cdrom  # or a iso image file
+for i in  32768,7   32776,32 32808,32 32958,128 33086,128 33214,128 \
+          33342,128 33470,32 33581,16 33598,16  33615,16  33632,16
+do
+  old_IFS="$IFS"
+  IFS=","
+  set -- $i
+  IFS="$old_IFS"
+  OFFSET=$1
+  LENGTH=$2
+  echo "#`dd if=$RD bs=1 skip=$OFFSET count=$LENGTH   2> /dev/null`#"
+done
+=======8<--------
+
+-------------------------------------------------------------------------------
+Under Windows...
+
+BlindRead makes perfect ISO images from CDROMs, and can write them out in a
+variety of formats.  DaemonTools mounts these ISO images transparently in
+Windows without the need to burn them to CD.
+
+  The BlindRead/BlindWrite suite  (Not free, but free trial period)
+       http://www.blindwrite.com/
+
+  DaemonTools (Free)
+       http://www.daemontools.org/
+
+VaporCD ( http://vaporcd.sourceforge.net) has been suggested a few times
+too, as a open source solution.
+
+-------------------------------------------------------------------------------
+Commercial CDROM burning software modify ISO images!!!
+
+I was surprised to find that commercial CD writing software does not generally
+create unadulterated ISO images of CD's. Nero, for example, uses some
+proprietary format (probably an ISO with a metadata header).
+
+-------------------------------------------------------------------------------
+Create a linux only ext2 cdrom!
+
+Create a ext2 file system in a file and mount it
+   dd if=/dev/zero of=cd.ext2 bs=1024k count=650
+   /sbin/mke2fs  -b 2048  cd.ext2
+   mount -t ext2 -o loop=/dev/loop1 cd.ext2 /mnt
+
+Note mke2fs may complain that the device is not a block special.
+Just tell it to proceed anyway.
+
+Copy the files into the file system and when finished unmount it.
+Now just burn "cd.ext2" directly to the cdrom using cdrecord as if
+it was an ISO image.
+
+NOTE: if you mount this filesystem via the "fstab" file ensure the last two
+numbers are 0 (zeros) so the fsck does NOT check the filesystem (it will
+fail).
+
+-------------------------------------------------------------------------------
+Audio CD Ripping
+
+
+Or even higher (Redhat 8.0 and up)   grip
+NOTE: this program by default saves names into the "ogg" sub-directory
+  Configure grip...
+    Rip     rip_file:  ./%A %t - %n.wav
+    Encode  execute:   lame
+            cmd_line:  -h -b %b --ta %A --tl %d --tt %n -- %w %m
+            enc_file:  ./%A %t - %n.mp3
+    Encode_opt  file:  ./%A.m3u
+    ID3     remove "Created by grip"
+    Misc    remove my email address
+            turn on   Do not lowercase names
+            turn on   Do not change spaces to underscores
+
+
+Lower Level Rip...
+You can use "cdda2wav" to get the "wav" files from the cd, instead.
+This can extract a specific track or interval from the audio cd.
+You can convert wav files to mp3 using "lame"
+
+Example...
+  cdda2wav -D /dev/cdrom -B
+  rm audio_*.inf
+  ls audio_*.wav > convert
+  vi convert
+    :%s/^/lame -h --tt "title" --ta "artist" --tl "album" /
+    :%s/album/...../
+    :%s/artist/...../
+    # edit the song titles
+    :wq
+  sh convert
+  rm audio_*.wav
+
+  vi convert
+    :%s/$/.mp3/
+    :%s/^.*--tt "\([^"]*\)" --ta "\([^"]*\)".* \(.*\)/mv \3 "\2 - \1".mp3
+    :%s/   */ /g
+    :%s/'//g
+    :%s/"The /"/g
+    :wq
+  sh convert
+  rm convert
+
+The "cdparanoia" does a simular job as "cdda2wav"
+
+-------------------------------------------------------------------------------
+Audio Writing...
+
+Sox can comvert "wav" files back into cdda-format. But the wav must be written
+as "16 bit stereo samples in PCM coding at 44100 samples/second (44.1kHz)"
+
+     sox song.wav song.cdr
+
+The cdr on write will pad to 2352 biytes and must be larger tha 705,600 bytes!
+which some wav files will not produce.
+
+
+To be expanded...
+
+-------------------------------------------------------------------------------
+DVD reading
+
+The folling was found in a mail signature...
+
+#!/usr/bin/perl -w
+$_='while(read+STDIN,$_,2048){$a=29;$b=73;$c=142;$t=255;@t=map
+{$_%16or$t^=$c^=($m=(11,10,116,100,11,122,20,100)[$_/16%8])&110;
+$t^=(72,@z=(64,72,$a^=12*($_%16-2?0:$m&17)),$b^=$_%64?12:0,@z)
+[$_%8]}(16..271);if((@a=unx"C*",$_)[20]&48){$h=5;$_=unxb24,join
+"",@b=map{xB8,unxb8,chr($_^$a[--$h+84])}@ARGV;s/...$/1$&/;$d=
+unxV,xb25,$_;$e=256|(ord$b[4])<<9|ord$b[3];$d=$d>>8^($f=$t&($d
+>>12^$d>>4^$d^$d/8))<<17,$e=$e>>8^($t&($g=($q=$e>>14&7^$e)^$q*
+8^$q<<6))<<9,$_=$t[$_]^(($h>>=8)+=$f+(~$g&$t))for@a[128..$#a]}
+print+x"C*",@a}';s/x/pack+/g;eval
+
+usage: qrpff 153 2 8 105 225 < /mnt/dvd/VOB_FILENAME \
+    | extract_mpeg2 | mpeg2dec -
+
+Where the other executables needed are to be found is anyones guess.
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+###### ELEG 3124 Systems and Signals ######
+
+****** LAB1 ******
+
+Lab Section I (Wed. 5:00-7:20PM) BELL 3139
+
+Group 1:	Rice,Tanner W		Guerci,Lorenzo		
+Group 2:	Sica,Massimiliano		Moore,Andrew McNeill		
+Group 3:	Desrochers,David		Rucker,Allison Elizabeth		
+Group 4:	Barnes,Hayden		Rodriguez,Luis		
+Group 5:	Fronzetti,Nicola		Carrillo,Andrew M		
+Group 6:	Attahrawi,Yosphe Majad		Krinickas,Stewart A		
+Group 7:	Sykes,Michael Raymond		Kassaw,Kaleb		
+Group 8:	Waller,Jonathan Andrew		Massery,Connor N		
+Group 9:	Ware,Phillip		Mays,Landon Dee		
+Group 10:	Arguijo,Miguel		Favia,Andrea		
+Group 11:	Hoelzeman,Nicholas Joseph		Williams,Jackson Colby		
+Group 12:	Musa,Mishek Jair		Shaw,Jamar Deshawn		Galindo,Joselinn
+
+Lab Section III (Fri. 2:00-4:20 PM) BELL 3139
+
+Group 1:	Alharbi,Mohammed Abdullah		Huang,Jenny J		
+Group 2:	Rose,Nicholas Scott		Hille,Andrew Wayne		
+Group 3:	Tucker,Michael A		Shein,Kz		
+Group 4:	Clayberg,Luke Joshua		Terrazas,Cesar		
+Group 5:	Nguyen,Maggie T		Heil,Zachary Bryant		
+Group 6:	Pugh,Keven Andrew		Beneux,Audra Ruth		
+Group 7:	Clayberg,Paul Justin		Hunter,Hayden P		
+Group 8:	Lewis,Jonathan Thomas		Chambers,DeMario R		
+Group 9:	Ferguson,Darryl Kaine		Slaughter,Lucas B		
+Group 10:	Symonette,Darren Nicholas		Wisdom,Brandon Lee		Lake,Clarence Mitchel
+Group 11:	Ayaviri Calizaya,Victor David		Williams,Camden James		Somphounout,Christ
+Group 12:	Otobo,Michael Oghenekome		Robison,Nathan Douglas		Garrett,Mackenzie

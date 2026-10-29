@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Dr. Jingxian Wu</title>
+	<meta name="author" content="Jingxian Wu">
+	<meta name="description" content="Dr. Jingxian Wu">
+	<meta name="keywords" content="Jingxian Wu, Wu Jingxian, wireless communication, University of Arkansas, Sonoma State University, Missouri ">
+
+	<link type="text/css" rel="stylesheet" href="stylejwu.css">
+</head>
+
+
+<body>
+<div id="wrap"><!-- #wrap - for centering -->
+
+
+	<div id="content"> <!-- including: main-content, sidebar -->
+	
+	<div id="main-content">
+
+
+		<div class="block">
+		<div class="category"> 
+			<h2 class="category-title">  Dr. Jingxian Wu </a> </h2> 
+			<div class="category-body">
+				<table> 
+				<tr><td ><b>Assistant Professor </td></tr>				
+				<tr><td ><b>Department of Electrical Engineering </td></tr>
+				<tr><td ><b>University of Arkansas </td></tr>				
+				<tr><td ><b>Fayetteville, AR 72701 </td></tr>
+				<tr><td><b>Phone: (479) 575-6584</td></tr>
+				<tr><td><b>Email: wuj at uark dot edu</td></tr>
+				</table> 
+			</div> <!-- end of category body -->
+		</div> <!-- end of category -->
+		</div> <!-- end of block -->
+
+		<div class="block">				
+		<div class="category">
+			 <a name="research"></a><h2 class="category-title">  Research </h2>
+			<div class="category-body">
+				<ul>
+					<li>Research Interests <br></li>  
+					<li><a href="research/publications.html">Publications</a> <br></li>  
+				</ul>
+			</div> <!-- end of category body -->
+		</div> <!-- end of category -->
+		</div> <!-- end of block -->
+		
+		<div class="block">				
+		<div class="category">
+			 <a name="teaching"></a><h2 class="category-title">  Teaching </h2>
+			<div class="category-body">
+				<ul>
+					<li><a href="teaching/eleg3923/eleg3923.html">ELEG3923 Microprocessor <br></li>  
+				</ul>
+			</div> <!-- end of category body -->
+		</div> <!-- end of category -->
+		</div> <!-- end of block -->
+
+
+
+		
+		<div class="block">				
+		<div class="category">
+			 <a name="vitae"></a><h2 class="category-title"><a href="vitae/vitae.html">  Curriculum Vitae </h2>
+			<div class="category-body">
+				<ul>
+					<li><a href="vitae/vitae.html#education">Education <br></li>  
+					<li><a href="vitae/vitae.html#research">Research Experiences <br></li>  
+					<li><a href="vitae/vitae.html#profession">Professional Activities <br></li>  
+					<li><a href="vitae/vitae.html">More ... <br></li>  
+				</ul>
+			</div> <!-- end of category body -->
+		</div> <!-- end of category -->
+		</div> <!-- end of block -->
+
+					
+	</div> <!-- end of main-content -->
+	
+	
+	</div> <!-- end of content -->
+
+	<div class="clear"> <!-- to fix IE6 padding-top issue --> </div>
+	
+	</div>	
+	
+</div> <!-- end of wrap -->
+</body>
+</html>
+	

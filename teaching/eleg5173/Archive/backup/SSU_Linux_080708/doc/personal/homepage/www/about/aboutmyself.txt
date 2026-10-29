@@ -1,0 +1,13 @@
+About Myself
+
+I was born in China in the year of 1975. My hometown, Tsingtao, is a quite and beautiful city by the seaside, and there I have numerous precious memories of my childhood. If you happen to love beer, you must have heard about Tsingtao Beer, which is my favorite. When I was 18, I left Tsingtao, left my home, and heading toward Beijing, the capitol of China, to pursue my college dream. 
+
+I became a student of Beihang University and my major is electrical engineering (EE). I choosed EE as my major because I was curious about everything with electicity since I was a yound child, such as the radio, the TV, and the old arcade games. The study burdens for engineering students are always heavy. Everyday I lived on the quadrangle of dorm, dinning hall, classrooms and library, and soaked myself in the wonderful sea of knowledge. Certainly, college life is not always about study, and rather it's quite exciting for a young man full of energy. The most wonderful thing happened during my college life is that I got to know the other half of my life -- my wife. I can still remember the happy, sweet, and crazy times we spent together. With the lapse of the time, some of the memories have become slices of short scences and snapshots, and they will always be saved in the bottom of my heart.
+
+After four years of college life, I became a master student Tsinghua University, the best university in China, and my wife, at that time still my girl friend, became a software Engineer in a high-tech company. I have a great advisor, Prof. Zhenming Feng, who gives me numerous support for both of my life and my research. My thesis work is mainly about the physical layer of the Hybrid Fiber Coaxial (HFC) network, a fancy word for the cable TV networks, and our objective is to provide broadband network access through the CATV cables. I can still remember how exciting I was when the user end device  designed by me finally works. After my graduation, I got the offer from University of Missouri-Columbia, and came to American to pursue my Ph.D. degree.
+
+The life of a Ph.D. student is not as easy as I have imagined. I spend most of the time conducting researches and still find the time is limited, but I also found numerous interests from my researches. My advisor, Dr. Chengshan Xiao, who is also a Tsinghua alumnus, is a nice professor and give me good guides through my research. My current research topics mainly focus on the physical layer of wireless communication channels, a field full of obstacles and excitments. I wish I could have some great results during the period of my Ph.D. study. 
+ 
+    
+
+    

@@ -1,0 +1,575 @@
+Title: linuxFAQ.txt
+Construction Date: Apr. 02, 2003
+Author: Jingxian Wu
+Description:
+   During the administrations of several linux workstations in University of Missouri,
+I found it necessary to write down some commonly used Linux commands and related
+operations for later references. Therefore I built this FAQ.
+
+--------------------------------------------------------------------------------
+Revision History:
+
+Rev 0.1: (04-02-2003)
+   The construction of the FAQ. Some commonly used Linux administration 
+commands and are written in the intial revision.
+
+--------------------------------------------------------------------------------
+
+1. Why do I write this FAQ?
+For later references. 
+
+2. How to create a new user in Linux?
+
+Command:
+   /usr/sbin/adduser [-d home_dir] [-u uid] [-g initial_group] [-G group] [-s shell] username
+
+Comments:
+   If the '-d' switch is not given, the default 'home_dir' is /home/username. If the dir
+'/home/username' does not exist, the system will creat this dir; otherwise the system
+will not overwrite the dir, but you need to change the owener of the dir to user 'username'
+by the following command
+   chown -R username /home/username
+The system discrimats different users by their uids.
+
+3. How to specify the password for a given user
+
+Command:
+   passwd username
+
+4. How to modify the attributes of a given user
+
+Command: 
+   usermod username
+
+4. How to limit the amount of system resources that can be accessed by certain users?
+Modify the file /etc/security/limits.conf. 
+
+Example 
+Limit the resources that can be accessed by the user comm. If the memory is
+limited to 128 MB, The priority of the program operated by comm is 
+bigger than 20 (the larger the number, the
+lower the priority), then add the following two lines to /etc/security/limits.conf
+
+comm        hard  as  128000
+comm        hard  priority  30
+
+5. What is vi? How to use it?
+
+vi is a powerful text edit software.
+
+Commonly used vi commands:
+
+set marks
+m[a-zA-Z]
+
+mark the current curson position as [a-zA-Z]
+
+Jump to marks
+'[a-zA-Z]
+Jump to the first character of the marked line
+`[a-zA-Z]
+Jump to the marked position
+
+copy (yank)
+:[range]y [x]
+copy the text specified in [range] to clipboard [x]
+Example
+:1;10y
+copy line 1 to line 10 to the default clipboards
+:'a,'by
+copy the contents between mark a and mark b to the default clipboard
+:20:/asdf/y
+copy the contents between line 20 and the string 'asdf' to the
+default clipboard
+:yy
+copy the current line
+
+replace
+:%s/old/new/g
+replace all the occurances of 'old' by 'new' of the entire article
+:#,#s/old/new/g
+replace the occurances of 'old' between the line number #,# by 'new'
+(use CTRL+g to display the line number)
+:%s/old/new/gc
+ask for confirmation before each replacement
+
+parenthethis match
+%
+
+Paste
+:p
+paste the contents in the default clipboard after cursor
+:P 
+paste the contents in the default clipboard before cursor
+:["x]p
+paste the contents in clipboard x after cursor
+:["x]P
+paste the contents in clipboard x before cursor
+
+Split window in vi
+:split
+
+Adjust the height of a window
+CTRL-W +
+CTRL-W -
+
+Go to another window
+CTRL-W w
+
+Open file
+:edit filename
+
+Switch vi to an external shell
+: shell
+
+Switch back to vi 
+CTRL-D
+
+turn off the syntax highlight scheme provided by vi
+edit the file .vimrc in your home dir, add the following
+command
+
+syntax off
+
+
+Let Vim display the edit status at the bottom of the window
+(INSERT, REPLACE, etc)
+vim -N
+The -N switch will turn off the vi compatible mode, which can
+be achieved by the command
+vim -C.
+When there is a .vimrc in your home dir, the vim will turn off
+the vi compatible mode automatically. 
+
+6. What is samba? How to manage the samba server?
+Samba is a service operated on Linux. It allows 
+windows workstations to access the files and printers
+on Linux workstations with Samba server.
+
+configure samba server:
+Refer to the Linux configuration guide provided by Redhat,
+which can be found at http://www.redhat.com/docs/manuals/
+
+check the status of samba server:
+/sbin/service smb status
+
+start the samba server
+/sbin/service smb start
+
+stop the samba server
+/sbin/service smb stop
+
+7. How to install Matlab on Linux?
+Put the Matlab installation disc in the CDROM drive of your computer,
+login in the computer as root. Usually the computer will mount
+the CDROM to the folder /mnt/cdrom automatically. If you find nothing
+in the folder /mnt/cdrom, then you need to mount the CDROM manually
+by typing the following command:
+
+mount -t iso9660 /mnt/cdrom
+
+A) cd /usr/local
+   mkdir Matlab
+   cd Matlab
+
+B) put license.dat in /usr/local/Matlab
+
+C) /mnt/cdrom/install* &
+   then following the on screen installation instructions
+
+D) After install
+   Create the following links, if they do not already exist:
+       ln -s $MATLAB/etc/lmboot /etc/lmboot_TMW12
+       ln -s $MATLAB/etc/lmdown /etc/lmdown_TMW12
+   where $MATLAB is the dir where Matlab is installed.
+
+   Create a copy of the boot script file.  On Red Hat systems:
+       cp $MATLAB/etc/rc.lm.glnx86 /etc/rc.d/init.d/flexlm
+
+   Replace the username in the code fragment with an actual username, other
+than root.
+
+   Look in /etc/inittab for the default run level.
+   Create a link in the rc directory associated with that run level.
+   For example if the run level is 5, then execute these commands. On Red Hat
+systems:
+       cd /etc/rc.d/rc5.d;
+       ln -s ../init.d/flexlm S90Flexlm
+
+E) How to avoid the graphic interface for all the users?
+i) modify /etc/bashrc, at the end of the file, add
+   alias matlab='matlab -nojvm'
+
+ii) modify /etc/csh.cshrc, at the end of the file, add
+   alias matlab 'matlab -nojvm'
+
+8. How to configure the printer for Linux?
+
+command:
+   printtool
+
+9. How to configure the resolution of the monitor?
+
+Command:
+   Xconfigurator
+
+10. How to configure the network?
+
+Command:
+   neat
+
+11. What is squid? How to configure it?
+Squid is a free and open source proxy server for both Linux and Unix.
+
+Basic Configurations
+edit /etc/squid/squid.conf 
+
+1) Define the access
+acl accessname src computerURL/networkMask
+where accessname can be any string, computerURL is the URL of the computer
+that is going to use this proxy server, and networkMask will screen the
+corresponding part of the URL.
+
+e.g.
+acl merl src 137.203.141.202/255.255.255.255
+
+2) enable the access
+http_access allow merl
+http_access deny all
+Only the computer defined in the access merl is allowed to access the proxy
+server.
+
+3) Set the proxy server port
+http_port portNumber
+The default portNumber is 3128
+
+4) start the proxy server
+/etc/rc.d/init.d/squid start
+
+Detailed information can be found in http://www.squid-cache.org/
+
+12. How to view the system resources consumed by the processes?
+use the command 'top'.
+
+
+13. How to temporialy suspend a program?
+Suspend a program
+
+kill -s SIGSTOP pid
+
+Continue a suspended program
+
+kill -s SIGCONT pid
+
+14. How can I find the binary file of a command?
+which command_name
+
+15. How to automatically mount a local file system?
+edit /etc/fstab
+
+e.g. mount the partition /home as /export/home
+add the following line in /etc/fstab
+
+LABEL=/home		/export/home		ext3	defaults	1 2
+
+16. Why I cannot use my linux machine as an e-mail server?
+Redhat linux comes with the mail transport angent (MTA) sendmail. 
+
+1) First check if the MTA service is running by the following command
+
+/sbin/service sendmail status
+
+2) If the status is stopped, then start either of the two MTAs by the
+following command
+
+/sbin/service sendmail start
+
+3) execute the following command to check if the MTA service is OK
+
+telnet localhost smtp
+
+at the command prompt, type
+mail from: anyname@anydomain
+rcpt to: abc@def.com (your own e-mail address)
+data
+quit
+
+then check if there is a new mail in abc@def.com
+
+4) From Redhat 7.1, sendmail is defaultly configured not to receive or send
+mail from Internet. In order to make your Linux machine a mail server, you
+need the following modifications (from www.redhat.com)
+
+"Sendmail-By default, sendmail does not accept network connections from any
+host other than the local computer. If you want to configure sendmail as a
+server for other clients, please edit /etc/mail/sendmail.mc and change
+DAEMON_OPTIONS to also listen on network devices, or comment out this option
+all together (type dnl before the line). You will need to regenerate
+/etc/sendmail.cf by running this command:
+
+m4 /etc/mail/sendmail.mc > /etc/sendmail.cf
+
+5) after regenerate /etc/sendmail.cf, restart the sendmail services
+
+/sbin/service sendmail stop
+/sbin/service sendmail start
+
+6) in /etc/hosts.allow, add the following line
+sendmail:ALL
+
+otherwise all mails sent to the e-mail servers will be denied.
+
+17. Why I cannot use mozilla-mail or outlook to pop my email in the mail
+server? (from www.redhat.com)
+
+Most likely this really is not a sendmail issue. Chances are the POP3 daemon
+is not installed. With Red Hat Linux, its part if the IMAP RPM. To see if the
+package is installed, type the following at a root command prompt:
+rpm -q imap
+If you get a no response, the IMAP RPM is not installed and you will need to
+install it to get things working right.  Just mount your installation CD-ROM
+(or second CD-ROM with Red Hat Linux 7.x) by typing:
+mount /mnt/cdrom
+Change to the /mnt/cdrom/RedHat/RPMS/ directory, then as root type:
+rpm -Uvh imap*.rpm
+Try connecting from your clients again.
+Under 6.2 or before, if you still have a problem open up your /etc/inetd.conf
+file in a text editor.
+Look for the line which ends with ipop3d and make sure it is not commented out
+or preceded with a pound sign. If it is, remove the pound sign and restart
+inetd by typing:
+/sbin/service xinetd restart
+Then try connecting again.
+If your Red Hat Linux version is 7.0 or higher, the system uses xinetd rather
+than inetd. You will need to make sure that ipop3 is turned on in xinetd.
+To see ipop3's current status, type this command as the root user:
+chkconfig --list ipop3
+If the response is off, type this command as root to turn on ipop3:
+chkconfig --level 345 ipop3 on
+If you need to turn on several POP and IMAP services at once, try using
+ntsysv. Type the following command as the root user:
+ntsysv 345
+Then, turn on several services for these runlevels by moving to the
+appropriate line, such as the ipop3 and ipop2 lines, and hitting the
+[Spacebar] to make your selections. Then, [Tab] to the OK button and press
+[Enter].
+Finally, you have to restart xinetd to make your chkconfig or ntsysv changes
+take effect. Type this command as the root user:
+/sbin/service xinetd restart
+Then, try to connect using your POP email clients again.  
+
+18. How to set up a master yp server? 
+
+my process
+
+1) ypdomainname domain_name
+2) /sbin/service ypserv start
+3) /usr/sbin/rpcinfo -u localhost ypserv # I'm not sure if this step is necessary
+4) /usr/lib/yp/ypinit -m
+5) /sbin/ypbind
+6) /usr/bin/ypwhich
+
+This process needs to be repeated every time the server restarts. 
+
+
+19. How to set up a yp client?
+
+use the command
+
+authconfig
+or
+authconfig-gtk # graphic interfact 
+
+20. How to configure the root directory of www server?
+edit the file /etc/httpd/conf/httpd.conf
+the default www root is /var/www/html/index.html
+
+21. How to configure NFS server?
+
+1) At the NFS server, edit /etc/exports at the NFS server to give a list of computers that can
+mount the NFS file system. (more info, type the command: man exports)
+
+2) At the NFS client, edit /etc/fstab to automically mount the NFS file
+system. (more info, type the comman: man fstab)
+
+Example:
+1) At the NFS server (shannon), edit /etc/exports, add the following line
+
+/export/home *.ee.missouri.edu(rw)
+
+The directory /export/home can be mounted by the computers with domain name
+*.ee.missouri.edu
+
+2) At the NFS Client, we can either mount the NFS system automatically at
+computer startup or manually:
+
+a) mount the NFS automatically from startup
+At the NFS client, edit /etc/fstab, add the following line
+
+shannon:/export/home      /nfshome/shannon		nfs	defaults	0 0
+
+reboot the client.
+
+b) mount the NFS manually
+
+mount nfsserver_domain_name:/export/home/ /nfshome/shannon/
+
+NOTE: the dir /nfshome/shannon can be any dir, but it must exist.
+
+3) restart the NFS service at the NFS server:
+
+/sbin/service nfs restart
+
+
+Hint: the mounted dir can be linked to the home directory of a user by the
+following command:
+
+ln -s /nfshome/shannon /export/home/user/shannonhome
+
+22. How to use the GUI menu of a computer if you remotely logged in that
+compuat?
+
+
+GNOME: use the command
+gnome-panel
+
+KDE: use the command
+kicker (Warning: you may close kicker after it is started).
+
+23. How to mount .iso file?
+
+mount file_name_of_iso_image /mnt/cdrom -t iso9660 -o loop=/dev/loop0
+
+The /mnt/cdrom should exist.
+
+24. How to creat iso image from cdrom?
+
+cat /dev/cdrom > filename.iso
+
+25. How to set up mail aliase for sendmail?
+
+Modify the sendmail aliases file, the path of which is saved in the sendmail
+configureation file /etc/sendmail.cf. The default path for sendmail aliases
+file is /etc/aliases.
+
+The format is 
+nick_name: real name
+
+After modifying the file /etc/aliases, run the command
+newaliases
+to notify sendmail the new aliases.
+
+26. How to add a new user to the NIS system? (not tested yet)
+
+adduser username
+cd /var/yp
+make
+
+27. How to change the default mode of files or dirs created by a certain user? 
+Log in as that user, use the command
+
+umask
+
+For example:
+umask 000
+
+The file created by the user can be read, write, execute by any other users. 
+
+28. How to allow and deny access from a certain computer?
+
+Modify /etc/hosts.allow and /etc/hosts.deny
+After modifying this two files, exectue the following command
+/sbin/service xinetd restart
+
+Example:
+
+in /etc/hosts.allow
+ALL: 128.206.
+
+in /etc/hosts.deny
+ALL: ALL
+
+Then only computers with IP start with 128.206 can access the given computer.
+
+29. How to turn off the telnet server on the computer?
+
+modify /etc/xinetd/telnet
+disable = yes
+
+Then execute the following command
+/sbin/service xinetd restart
+
+30. Why the sendmail e-mail server (smtp server) refuses to relay my e-mail?
+
+add or modify the file /etc/mail/relay-domains, add the domain of the computer which
+will use the server to send e-mail, then restart sendmail.
+
+For example:
+add the following line in relay-domains:
+128.206.
+
+then restart sendmail
+/sbin/service sendmail restart
+
+
+31. How to configure sendmail when the server has two domain names?
+add the domain name to the file /etc/mail/local-host-names
+
+For example:
+The server shannon.ece.missouri.edu has another domain name: ee.missouri.edu
+I want to receive e-mail in the format user@ee.missouri.edu
+add the following line to /etc/mail/local-host-names
+ee.missouri.edu
+
+then restart sendmail
+/sbin/service sendmail restart
+
+32. How to check the disk space consumed by a certain directory?
+
+use the command: du 
+
+33. How to set the date and time of the computer?
+
+date -s "Wed Apr 14 10:24:15 CDT 2004"
+
+34. Why I cannot display X-window with ssh connection even though 
+X11-forwarding is already enabled in my ssh client?
+
+From openssh 3.7.1, X11 forwarding is defaultly disabled at both server
+and client. To enable it, following these steps
+
+1) edit /etc/ssh/ssh_config, add
+ForwardAgent yes
+ForwardX11 yes
+
+2) edit /etc/ssh/sshd_config, add
+X11Forwarding yes
+
+3) /sbin/service sshd restart
+
+35. How to turn off rpc.statd?
+
+rpc.statd is usded by nfs, and it has security problem. To turn it off:
+
+/sbin/service nfs stop
+/sbin/service nfslock stop
+
+36. How to tell the http server where the personal homepages 
+of each user is stored?
+
+edit /etc/httpd/conf/httpd.conf,
+1) comment out: 
+#UserDir disable
+
+2) add:
+UserDir www
+
+where www is the name of the dir that the homepage is saved, and it could be
+changed to other names. 
+
+3) /sbin/service httpd restart
+
+The user will have webaddress as
+http://name.domain/~user/
+
+

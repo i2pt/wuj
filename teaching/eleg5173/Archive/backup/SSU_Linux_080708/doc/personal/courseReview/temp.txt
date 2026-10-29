@@ -1,0 +1,1 @@
+S.Y. Leong, J. Wu, J.C. Olivier and C. Xiao, "Fast Time-Varying Channel estimation and Equalization for 8-PSK system," submitted to IEEE Transaction on Vehicular Technology.

@@ -1,0 +1,67 @@
+1. Have you previously worked as a computer consultant
+
+   1. Currently I'm working as a volunteer network administrator for the Digital Communication Lab of MU, and I'm in charge of the maintance of all the Linux and Unix servers and workstations in the lab. The supervisor of the Lab is Dr. Dominic Ho (573-882-8023, hoD@missouri.edu)
+
+   2.  I worked as the network administrator of the Wideband Access Lab of Tsinghua University during the year of 1999-2001, in charging of 1 linux server and 14 windows NT workstations.
+
+
+2.  Describe the service skills you have used in previous jobs or service organization positions (paid or volunteer)
+
+As the network administrator of the Digital Communication Lab of MU, I'm working hard to provide the best computing facilities to all the faculties and students in the lab. Whenever there is some problem about a computer, I'll try my best to diagnose the computer and solve the problem as soon as possible.  I also try to meet the needs of everybody in Lab, including both students and faculties. Routinly I make sure the  computing environment is secure and every user account is working properly.
+
+3. List techniques or attitudes you think are important in a customer service position. 
+
+1. Willing to help orthers.
+2. Warmhearted.
+3. Patience. 
+4. Having profound knowledge in the field of service.
+5. Having the ability to solve technical problems.
+
+4. Resume
+
+1.  General Information
+  * Name: WU, Jingxian	
+  * Date of Birth: November 25, 1975
+  * Gender: Male	
+  * Major: Electrical and Computer Engineering
+  * Tel: (573) 884-0097	E-Mail: jw87c@mizzou.edu
+
+2. Educations
+   * 2001 ~ Present Univ. of Missouri - Columbia MO, USA, Candidate of Ph. D. GPA: 4.0/4.0	 
+   * 1998 ~ 2001 Tsinghua University Beijing, P. R. China, 	Master of Science
+   * 1994 ~ 1998 Beijing Univ. of Aero. & Astro. Beijing, P. R. China, Bachelor
+
+3. Academic Honors
+    * IEEE Student Travel Grant, 2004
+    * Research Assistantship (2001-2004, MU)
+    * Guanghua Fellowship (1999, Tsinghua University)
+    * Internship Scholarship, First Prize (1999, Tsinghua University)
+    * Privilege to be enrolled in the master program of Tsinghua University with entrance examination waived (1998, Tsinghua University)
+    * The People's Scholarship, First Prize (1995, 1996, 1997, BUAA)
+    * Second Awards of the Advanced Mathematical Competition (1996, BUAA)
+    * Lizheng Fellowship for the top 1 freshman (1994, BUAA)
+
+4. Professional Activities
+    * Internship engineer in the Mitsubishi Electric Research Lab (MERL) (2003)
+    * Internship engineer in the Beijing I-Star Company (1999)
+    * Voluntee as the system administrator of the Digital Communication Lab of MU (2003-present)
+    * Volunteer for the Special Olympic of Missouri (2002)
+    * Reviewer for IEEE Journal on Selected Areas of Communications
+    * Reviewer for IEEE Transactions on Wireless Communications
+    * Reviewer for IEEE Transactions on Transaction on Vehicular Technology
+    * Reviewer for IEEE Transactions on Circuits and Systems - I
+    * Reviewer for International Journal on Wireless Information Networks
+    * Member, Tau Beta Pi, Sigma Xi
+    * Student Member, IEEE
+
+5. Skills
+    * Linux System administration
+    * Proficient with computer programming in C/C++ on both Windows and UNIX platform
+    * Communication systems simulation with Matlab
+    * Network layer simulation for communication networks
+    * Familiar with the script langrage Tcl/Tk
+    * Software design and hardware implementation of communication systems
+    * Familiar with PCB design tools, such as PowerPCB, Protel, ORCAD
+
+
+

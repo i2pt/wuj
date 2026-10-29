@@ -1,0 +1,72 @@
+Hi,
+
+Your user account has been set up for fourier.ee.missouri.edu 
+(the computer to the left of gauss) and laplace.ee.missouri.edu 
+(the computer at the corner of the lab), respectively. 
+
+------------------------------------------------------------------------------------
+1. USER ACCOUNT INFORMATION
+
+Due to the recent instability of mars.ee and saturn.ee, I donot share
+the user information from these servers. so new accounts are set up
+for the two new computers fourier.ee and laplace.ee (your user information at gauss.ee remains unchanged). 
+Below is the account information
+
+fourier.ee.missouri.edu
+
+user name:
+password:
+
+laplace.ee.missouri.edu
+
+user name:
+password:
+
+YOU MUST CHANGE YOUR PASSWORD FOR BOTH FOURIER AND LAPLACE.
+Please use the command
+   passwd username
+to change your password.
+
+When you log in any of the linux workstations (gauss.ee, laplace.ee, fourier.ee), there are
+links in your home dir connecting to your files in other computers.
+
+For example, when you log onto fourier.ee, in your home dir you will find the follwoing two dirs:
+gausshome, laplacehome
+You can access your files in these two computers through these links directly. 
+
+I recommend you store your files in only one computer, and you can access your files through any of these
+three linux workstations. I think this will be easier for you to maintain your files :).
+
+---------------------------------------------------------------------------------------
+2. MATLAB INFORMATION
+
+You can use Matlab in any of the three linux workstations (gauss, fourier and laplace).
+The license of Matlab installed on these computers 
+allows only one user to use Matlab at one time, so I set up a common user for Matlab. 
+If you want to use Matlab on gauss.ee, fourier.ee, and laplace.ee, please log in
+as the common user:
+
+user name: comm
+passwd: matlab6
+
+I strongly recommend you put all of your matlab code under one directory in YOUR OWN home directory, 
+and change the permission of the code directory so that the common user can read and write the files in this directory.
+By this means, when you login as the common user, you can still access your own matlab code, and you
+donot need to transfer your code to the home directory of the common user. 
+
+Enable the common user read and write your directory
+
+chmod -R 775 directoryname
+
+Disable the common user write to your directory
+
+chmod -R 755 directoryname
+-------------------------------------------------------------------------------------------
+
+If you have any other questions and have problem accessing your account, please feel free to contact me.
+
+Enjoy your work on these computers!
+
+Jingxian Wu
+ 
+

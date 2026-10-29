@@ -1,0 +1,7 @@
+body { background-image: url(img/background.gif); margin: 40 10%; font-family: Comic Sans Ms, Arial, sans-serif; font-size: 20 }
+img { border-style: none }
+a:hover { color: #00CCFF }
+hr { color: black }
+ul { list-style-type: none }
+.center { text-align: center }
+.author { font-family: Times New Roman, Arial, sans-serif; font-style: italic; font-size: 18 }
